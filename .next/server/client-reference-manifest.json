@@ -48,14 +48,6 @@
         "async": false
       }
     },
-    "(app-client)/./components/contact.tsx": {
-      "*": {
-        "id": "(sc_client)/./components/contact.tsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
     "(app-client)/./components/experience.tsx": {
       "*": {
         "id": "(sc_client)/./components/experience.tsx",
@@ -96,17 +88,9 @@
         "async": false
       }
     },
-    "(app-client)/./node_modules/react-hot-toast/dist/index.mjs": {
+    "(app-client)/./components/contact.tsx": {
       "*": {
-        "id": "(sc_client)/./node_modules/react-hot-toast/dist/index.mjs",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./components/header.tsx": {
-      "*": {
-        "id": "(sc_client)/./components/header.tsx",
+        "id": "(sc_client)/./components/contact.tsx",
         "name": "*",
         "chunks": [],
         "async": false
@@ -120,9 +104,9 @@
         "async": false
       }
     },
-    "(app-client)/./context/active-section-context.tsx": {
+    "(app-client)/./components/header.tsx": {
       "*": {
-        "id": "(sc_client)/./context/active-section-context.tsx",
+        "id": "(sc_client)/./components/header.tsx",
         "name": "*",
         "chunks": [],
         "async": false
@@ -131,6 +115,22 @@
     "(app-client)/./context/theme-context.tsx": {
       "*": {
         "id": "(sc_client)/./context/theme-context.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./context/active-section-context.tsx": {
+      "*": {
+        "id": "(sc_client)/./context/active-section-context.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/react-hot-toast/dist/index.mjs": {
+      "*": {
+        "id": "(sc_client)/./node_modules/react-hot-toast/dist/index.mjs",
         "name": "*",
         "chunks": [],
         "async": false
@@ -227,14 +227,6 @@
       ],
       "async": false
     },
-    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\contact.tsx": {
-      "id": "(app-client)/./components/contact.tsx",
-      "name": "*",
-      "chunks": [
-        "app/page:static/chunks/app/page.js"
-      ],
-      "async": false
-    },
     "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\experience.tsx": {
       "id": "(app-client)/./components/experience.tsx",
       "name": "*",
@@ -275,16 +267,16 @@
       ],
       "async": false
     },
-    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\node_modules\\react-hot-toast\\dist\\index.mjs": {
-      "id": "(app-client)/./node_modules/react-hot-toast/dist/index.mjs",
+    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\contact.tsx": {
+      "id": "(app-client)/./components/contact.tsx",
       "name": "*",
       "chunks": [
-        "app/layout:static/chunks/app/layout.js"
+        "app/page:static/chunks/app/page.js"
       ],
       "async": false
     },
-    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\node_modules\\next\\font\\google\\target.css?{\"path\":\"app\\\\layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}": {
-      "id": "(app-client)/./node_modules/next/font/google/target.css?{\"path\":\"app\\\\layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}",
+    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\theme-switch.tsx": {
+      "id": "(app-client)/./components/theme-switch.tsx",
       "name": "*",
       "chunks": [
         "app/layout:static/chunks/app/layout.js"
@@ -299,8 +291,8 @@
       ],
       "async": false
     },
-    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\theme-switch.tsx": {
-      "id": "(app-client)/./components/theme-switch.tsx",
+    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\context\\theme-context.tsx": {
+      "id": "(app-client)/./context/theme-context.tsx",
       "name": "*",
       "chunks": [
         "app/layout:static/chunks/app/layout.js"
@@ -315,8 +307,8 @@
       ],
       "async": false
     },
-    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\context\\theme-context.tsx": {
-      "id": "(app-client)/./context/theme-context.tsx",
+    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\node_modules\\next\\font\\google\\target.css?{\"path\":\"app\\\\layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}": {
+      "id": "(app-client)/./node_modules/next/font/google/target.css?{\"path\":\"app\\\\layout.tsx\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}",
       "name": "*",
       "chunks": [
         "app/layout:static/chunks/app/layout.js"
@@ -325,6 +317,14 @@
     },
     "C:\\Users\\LSPL333\\Desktop\\Meeketank\\app\\globals.css": {
       "id": "(app-client)/./app/globals.css",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\node_modules\\react-hot-toast\\dist\\index.mjs": {
+      "id": "(app-client)/./node_modules/react-hot-toast/dist/index.mjs",
       "name": "*",
       "chunks": [
         "app/layout:static/chunks/app/layout.js"
