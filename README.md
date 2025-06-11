@@ -50,7 +50,7 @@
 > Add your site screenshot here:
 
 <p align="center">
-  <img src="https://github.com/meeketank/portfolio/blob/main/public/meta-image.png?raw=true" width="700" alt="Portfolio Screenshot" />
+  <img src="https://github.com/user-attachments/assets/66503172-0495-4c6e-95ca-13221a560893" width="700" alt="Portfolio Screenshot" />
 </p>
 
 ---
