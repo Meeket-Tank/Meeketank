@@ -114,7 +114,7 @@ This project helped me strengthen my:
 
 ```bash
 # Clone the repo
-git clone https://github.com/meeketank/portfolio.git
+git clone https://github.com/Meeketank/Meeketank-Personal.git
 
 # Install dependencies
 npm install
