@@ -48,6 +48,14 @@
         "async": false
       }
     },
+    "(app-client)/./components/contact.tsx": {
+      "*": {
+        "id": "(sc_client)/./components/contact.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
     "(app-client)/./components/experience.tsx": {
       "*": {
         "id": "(sc_client)/./components/experience.tsx",
@@ -56,17 +64,17 @@
         "async": false
       }
     },
-    "(app-client)/./components/projects.tsx": {
+    "(app-client)/./components/intro.tsx": {
       "*": {
-        "id": "(sc_client)/./components/projects.tsx",
+        "id": "(sc_client)/./components/intro.tsx",
         "name": "*",
         "chunks": [],
         "async": false
       }
     },
-    "(app-client)/./components/intro.tsx": {
+    "(app-client)/./components/projects.tsx": {
       "*": {
-        "id": "(sc_client)/./components/intro.tsx",
+        "id": "(sc_client)/./components/projects.tsx",
         "name": "*",
         "chunks": [],
         "async": false
@@ -83,14 +91,6 @@
     "(app-client)/./components/skills.tsx": {
       "*": {
         "id": "(sc_client)/./components/skills.tsx",
-        "name": "*",
-        "chunks": [],
-        "async": false
-      }
-    },
-    "(app-client)/./components/contact.tsx": {
-      "*": {
-        "id": "(sc_client)/./components/contact.tsx",
         "name": "*",
         "chunks": [],
         "async": false
@@ -227,6 +227,14 @@
       ],
       "async": false
     },
+    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\contact.tsx": {
+      "id": "(app-client)/./components/contact.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
     "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\experience.tsx": {
       "id": "(app-client)/./components/experience.tsx",
       "name": "*",
@@ -235,16 +243,16 @@
       ],
       "async": false
     },
-    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\projects.tsx": {
-      "id": "(app-client)/./components/projects.tsx",
+    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\intro.tsx": {
+      "id": "(app-client)/./components/intro.tsx",
       "name": "*",
       "chunks": [
         "app/page:static/chunks/app/page.js"
       ],
       "async": false
     },
-    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\intro.tsx": {
-      "id": "(app-client)/./components/intro.tsx",
+    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\projects.tsx": {
+      "id": "(app-client)/./components/projects.tsx",
       "name": "*",
       "chunks": [
         "app/page:static/chunks/app/page.js"
@@ -261,14 +269,6 @@
     },
     "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\skills.tsx": {
       "id": "(app-client)/./components/skills.tsx",
-      "name": "*",
-      "chunks": [
-        "app/page:static/chunks/app/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\LSPL333\\Desktop\\Meeketank\\components\\contact.tsx": {
-      "id": "(app-client)/./components/contact.tsx",
       "name": "*",
       "chunks": [
         "app/page:static/chunks/app/page.js"
