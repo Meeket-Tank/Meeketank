@@ -1,5 +1,6 @@
 <h1 align="center">🚀 Meeket Tank Portfolio</h1>
 
+
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=3000&pause=1000&color=00BFFF&center=true&vCenter=true&width=500&lines=Hi+I'm+Meeket+Tank!;Web+Developer+%7C+Tech+%26+Finance+Enthusiast;I+build+beautiful+and+responsive+websites." alt="Typing animation" />
 </p>
@@ -22,6 +23,18 @@
 📱 Fully responsive  
 🎨 Smooth animations via Framer Motion  
 📬 Contact form with real-time notifications
+
+---
+
+## 🏢 Organization
+
+This project is maintained under the **[Meeket-Tank](https://github.com/Meeket-Tank)** organization on GitHub.
+
+<p align="left">
+  <a href="https://github.com/Meeket-Tank">
+    <img src="https://img.shields.io/badge/GitHub%20Org-Meeket--Tank-181717?style=flat&logo=github" alt="GitHub Org" />
+  </a>
+</p>
 
 ---
 
