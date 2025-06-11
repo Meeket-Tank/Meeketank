@@ -22,11 +22,11 @@ export default function About() {
   I am an <strong>MBA(Tech)(Computer Engineering) student at NMIMS</strong>,
   where I'm deeply focused on enhancing my technical and creative skills for a
   dynamic career in tech. My background includes practical experience in
-  <strong>website management</strong> and proficiency in
-  <strong>Microsoft tools</strong>, allowing me to contribute valuable insights
+  <strong> website management</strong> and proficiency in
+  <strong> Microsoft tools</strong>, allowing me to contribute valuable insights
   to digital projects. My experience in <strong>technical support</strong> has
   also given me a solid understanding of project dynamics and financial
-  management. <span className="italic">My favorite part of programming</span>
+  management. <span className="italic">My favorite part of programming </span>
   is the problem-solving aspect, as I thrive on finding solutions to complex
   challenges and using technology to drive growth.
 </p>
@@ -35,7 +35,7 @@ export default function About() {
   <span className="italic">When I'm not immersed in code or studies</span>, I
   am passionate about continuous learning and embracing new challenges. I enjoy
   exploring how technology can be used to make a meaningful impact. I'm also a
-  <strong>collaborative communicator</strong>, dedicated to achieving shared
+  <strong> collaborative communicator</strong>, dedicated to achieving shared
   goals as a results-oriented team member.
 </p>
     </motion.section>
