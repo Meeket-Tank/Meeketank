@@ -3,118 +3,123 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { heroStats, profile } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
-import { useActiveSectionContext } from "@/context/active-section-context";
-import self from "@/public/images/self.jpg";
+import CareerChart from "./career-chart";
+import CountUp from "./count-up";
+import Typewriter from "./typewriter";
+import { openTerminal } from "./command-palette";
+
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.6, ease: "easeOut" },
+});
 
 export default function Intro() {
-  const { ref } = useSectionInView("Home", 0.5);
-  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+  const { ref } = useSectionInView("Home", 0.3);
 
   return (
-    <section
-      ref={ref}
-      id="home"
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
-    >
-      <div className="flex items-center justify-center">
-        <div className="relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "tween",
-              duration: 0.2,
-            }}
-          >
-            <Image
-              src="/self.png"
-              alt="Meeket portrait"
-              width="256"
-              height="256"
-              quality="95"
-              priority={true}
-              className="h-48 w-48 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
-            />
+    <section ref={ref} id="home" className="scroll-mt-40 pb-24 pt-6">
+      <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
+        <div>
+          <motion.div {...fadeUp(0)} className="mb-6 flex items-center gap-4">
+            <div className="relative h-16 w-16 shrink-0">
+              <span className="absolute -inset-1 animate-[spin_6s_linear_infinite] rounded-full bg-[conic-gradient(from_0deg,#00e396,transparent_40%,#35d0ff,transparent_80%,#00e396)] opacity-80" />
+              <Image
+                src="/self.png"
+                alt="Portrait of Meeket Tank"
+                width={128}
+                height={128}
+                priority
+                className="relative h-16 w-16 rounded-full border-2 border-ink-950 object-cover"
+              />
+            </div>
+            <div className="font-mono text-xs leading-relaxed text-white/55">
+              <p className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-up animate-pulseDot" />
+                <span className="text-up">OPEN TO OPPORTUNITIES</span>
+              </p>
+              <p>{profile.location} · MBA Tech ’27 · NMIMS</p>
+            </div>
           </motion.div>
 
-          <motion.span
-            className="absolute bottom-0 right-0 text-4xl origin-bottom-right group-hover:animate-wave"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 125,
-              delay: 0.1,
-              duration: 0.7,
-            }}
-          >
-            👋
-          </motion.span>
+          <motion.h1 {...fadeUp(0.08)} className="text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl">
+            Meeket Tank
+          </motion.h1>
+
+          <motion.p {...fadeUp(0.16)} className="mt-4 font-mono text-lg sm:text-xl">
+            <span className="text-white/40">&gt; </span>
+            <Typewriter words={profile.roles} />
+          </motion.p>
+
+          <motion.p {...fadeUp(0.24)} className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-white/65">
+            I build where <span className="text-white">finance meets code</span> — automating treasury and
+            channel-finance workflows at <span className="text-white">JSW Steel</span>, shipping Next.js commerce at{" "}
+            <span className="text-white">Logixal</span>, and training models that forecast markets and score credit
+            risk.
+          </motion.p>
+
+          <motion.div {...fadeUp(0.32)} className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#resume" className="btn-primary group">
+              View resume
+              <BsArrowRight className="transition group-hover:translate-x-1" />
+            </a>
+            <a href={profile.resume} download="Meeket_Tank_Resume.pdf" className="btn-ghost group">
+              Download CV
+              <HiDownload className="transition group-hover:translate-y-0.5" />
+            </a>
+            <button onClick={openTerminal} className="btn-ghost">
+              <span className="text-up">&gt;_</span> Ask the terminal
+            </button>
+            <div className="ml-1 flex items-center gap-2">
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="grid h-10 w-10 place-items-center rounded-lg border border-white/15 text-white/70 transition hover:border-up/60 hover:text-white"
+              >
+                <BsLinkedin />
+              </a>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+                className="grid h-10 w-10 place-items-center rounded-lg border border-white/15 text-lg text-white/70 transition hover:border-up/60 hover:text-white"
+              >
+                <FaGithub />
+              </a>
+            </div>
+          </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+        >
+          <CareerChart />
+        </motion.div>
       </div>
 
-      <motion.h1
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
+      <motion.dl
+        {...fadeUp(0.45)}
+        className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.07] md:grid-cols-4"
       >
-        <span className="font-bold">Hello, I'm Meeket Tank.</span> I'm a{" "}
-        <span className="font-bold">Web developer</span> with{" "}
-        <span className="font-bold">2 years</span> of experience. I enjoy
-        building <span className="italic">sites & apps</span>. My focus are mainly{" "}
-        <span className="underline">Finance and Tech</span>.
-      </motion.h1>
-
-      <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.1,
-        }}
-      >
-        <Link
-          href="#contact"
-          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
-          onClick={() => {
-            setActiveSection("Contact");
-            setTimeOfLastClick(Date.now());
-          }}
-        >
-          Contact me here{" "}
-          <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
-        </Link>
-
-        <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
-          href="/CV.pdf"
-          download
-        >
-          Download CV{" "}
-          <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
-        </a>
-
-        <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://www.linkedin.com/in/meeketank/"
-          target="_blank"
-        >
-          <BsLinkedin />
-        </a>
-
-        <a
-          className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://github.com/meeketank"
-          target="_blank"
-        >
-          <FaGithubSquare />
-        </a>
-      </motion.div>
+        {heroStats.map((s) => (
+          <div key={s.label} className="bg-ink-900/90 px-5 py-5">
+            <dd className="font-mono text-3xl font-semibold text-white">
+              <CountUp to={s.value} prefix={s.prefix} suffix={s.suffix} />
+            </dd>
+            <dt className="label mt-1 normal-case tracking-wide">{s.label}</dt>
+          </div>
+        ))}
+      </motion.dl>
     </section>
   );
 }
