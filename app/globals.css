@@ -2,14 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: dark;
+}
+
 html {
-  --line-color: #e5e7eb;
+  scroll-behavior: smooth;
+  background: #04060a;
 }
 
-html.dark {
-  --line-color: rgba(255, 255, 255, 0.2);
+body {
+  background: #04060a;
 }
 
-.borderBlack {
-  @apply border border-black/10;
+::selection {
+  background: rgba(0, 227, 150, 0.3);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #04060a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b2636;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00e396;
+}
+
+@layer components {
+  .panel {
+    @apply relative rounded-xl border border-white/[0.07] bg-ink-900/70 backdrop-blur-md;
+  }
+  .panel-glow {
+    @apply panel transition-colors duration-300 hover:border-up/40;
+  }
+  .label {
+    @apply font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/40;
+  }
+  .chip {
+    @apply rounded-md border border-white/10 bg-white/[0.03] px-2 py-0.5 font-mono text-[0.7rem] text-white/70;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-lg px-5 py-2.5 font-mono text-sm transition active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-up/60;
+  }
+  .btn-primary {
+    @apply btn bg-up text-ink-950 font-semibold hover:bg-up/90 hover:shadow-[0_0_24px_rgba(0,227,150,0.45)];
+  }
+  .btn-ghost {
+    @apply btn border border-white/15 text-white/80 hover:border-up/60 hover:text-white;
+  }
+}
+
+/* Faint grid + vignette that sits behind everything */
+.grid-bg {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 80%);
+}
+
+/* CRT scanline overlay */
+.scanlines::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.018) 0,
+    rgba(255, 255, 255, 0.018) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 60;
+}
+
+/* Cursor-follow spotlight on cards (driven by --mx/--my) */
+.spotlight {
+  background-image: radial-gradient(
+    380px circle at var(--mx, -100px) var(--my, -100px),
+    rgba(0, 227, 150, 0.09),
+    transparent 60%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

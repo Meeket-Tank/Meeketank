@@ -1,156 +1,125 @@
-// "use client";
-
-// import React from "react";
-// import SectionHeading from "./section-heading";
-// import { motion } from "framer-motion";
-// import { useSectionInView } from "@/lib/hooks";
-// import { sendEmail } from "@/actions/sendEmail";
-// import SubmitBtn from "./submit-btn";
-// import toast from "react-hot-toast";
-
-// export default function Contact() {
-//   const { ref } = useSectionInView("Contact");
-
-//   return (
-//     <motion.section
-//       id="contact"
-//       ref={ref}
-//       className="mb-20 sm:mb-28 w-[min(100%,38rem)] text-center"
-//       initial={{
-//         opacity: 0,
-//       }}
-//       whileInView={{
-//         opacity: 1,
-//       }}
-//       transition={{
-//         duration: 1,
-//       }}
-//       viewport={{
-//         once: true,
-//       }}
-//     >
-//       <SectionHeading>Contact me</SectionHeading>
-
-//       <p className="text-gray-700 -mt-6 dark:text-white/80">
-//         Please contact me directly at{" "}
-//         <a className="underline" href="mailto:meeketketantank@gmail.com">
-//           meeketketantank@gmail.com
-//         </a>{" "}
-//         {/* or from this form. */}
-//       </p>
-
-//       <form
-//         className="mt-10 flex flex-col dark:text-black"
-//         action={async (formData) => {
-//           const { data, error } = await sendEmail(formData);
-
-//           if (error) {
-//             toast.error(error);
-//             return;
-//           }
-
-//           toast.success("Email sent successfully!");
-//         }}
-//       >
-//         <input
-//           className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-//           name="senderEmail"
-//           type="email"
-//           required
-//           maxLength={500}
-//           placeholder="Your email"
-//         />
-//         <textarea
-//           className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-//           name="message"
-//           placeholder="Your message"
-//           required
-//           maxLength={5000}
-//         />
-//         <SubmitBtn />
-//       </form>
-//     </motion.section>
-//   );
-// }
-
 "use client";
 
-import React from "react";
-import SectionHeading from "./section-heading";
-import { motion } from "framer-motion";
-import { useSectionInView } from "@/lib/hooks";
-import SubmitBtn from "./submit-btn";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { BsLinkedin } from "react-icons/bs";
+import { FaGithub } from "react-icons/fa";
+import { FiCopy, FiMail, FiSend } from "react-icons/fi";
+import SectionHeading from "./section-heading";
+import { profile } from "@/lib/data";
+import { useSectionInView } from "@/lib/hooks";
+
+const channels = [
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}`, icon: FiMail, copy: true },
+  { label: "College", value: profile.collegeEmail, href: `mailto:${profile.collegeEmail}`, icon: FiMail, copy: true },
+  { label: "LinkedIn", value: "in/meeketank", href: profile.linkedin, icon: BsLinkedin },
+  { label: "GitHub", value: "@meeketank", href: profile.github, icon: FaGithub },
+];
 
 export default function Contact() {
-  const { ref } = useSectionInView("Contact");
+  const { ref } = useSectionInView("Contact", 0.3);
+  const [pending, setPending] = useState(false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
     const form = event.currentTarget;
-    const formData = new FormData(form);
+    setPending(true);
 
     try {
       const response = await fetch("https://formspree.io/f/mqabqzqe", {
         method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
       });
 
       if (response.ok) {
-        toast.success("Message sent successfully!");
+        toast.success("Message transmitted. I’ll reply soon!");
         form.reset();
       } else {
         toast.error("Something went wrong. Please try again.");
       }
-    } catch (error) {
-      toast.error("Error submitting form. Please try again.");
+    } catch {
+      toast.error("Network error. Please email me directly.");
+    } finally {
+      setPending(false);
     }
   }
 
+  async function copy(value: string) {
+    try {
+      await navigator.clipboard.writeText(value);
+      toast.success("Copied to clipboard");
+    } catch {
+      toast.error("Couldn’t copy");
+    }
+  }
+
+  const input =
+    "w-full rounded-lg border border-white/10 bg-ink-950/70 px-4 py-3 font-mono text-sm text-white placeholder:text-white/30 outline-none transition focus:border-up/60 focus:shadow-[0_0_0_3px_rgba(0,227,150,0.12)]";
+
   return (
-    <motion.section
-      id="contact"
-      ref={ref}
-      className="mb-20 sm:mb-28 w-[min(100%,38rem)] text-center"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      viewport={{ once: true }}
-    >
-      <SectionHeading>Contact me</SectionHeading>
+    <section ref={ref} id="contact" className="scroll-mt-24 py-20">
+      <SectionHeading index="07" kicker="Contact · open a position">
+        Let’s build something that compounds.
+      </SectionHeading>
 
-      <p className="text-gray-700 -mt-6 dark:text-white/80">
-        Please contact me directly at{" "}
-        <a className="underline" href="mailto:meeketketantank@gmail.com">
-          meeketketantank@gmail.com
-        </a>
-      </p>
+      <div className="grid gap-4 lg:grid-cols-[1fr_1.3fr]">
+        <ul className="space-y-3">
+          {channels.map((c) => (
+            <li key={c.label} className="panel-glow flex items-center gap-4 px-4 py-3.5">
+              <c.icon className="shrink-0 text-lg text-up" />
+              <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="min-w-0 flex-1">
+                <span className="label block">{c.label}</span>
+                <span className="block truncate font-mono text-sm text-white">{c.value}</span>
+              </a>
+              {c.copy && (
+                <button
+                  onClick={() => copy(c.value)}
+                  aria-label={`Copy ${c.label.toLowerCase()} address`}
+                  className="rounded-md p-2 text-white/40 transition hover:bg-white/5 hover:text-white"
+                >
+                  <FiCopy />
+                </button>
+              )}
+            </li>
+          ))}
+        </ul>
 
-      <form
-        className="mt-10 flex flex-col dark:text-black"
-        onSubmit={handleSubmit}
-      >
-        <input
-          className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="email"
-          type="email"
-          required
-          maxLength={500}
-          placeholder="Your email"
-        />
-        <textarea
-          className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="message"
-          placeholder="Your message"
-          required
-          maxLength={5000}
-        />
-        <SubmitBtn />
-      </form>
-    </motion.section>
+        <form onSubmit={handleSubmit} className="panel space-y-3 p-5">
+          <p className="font-mono text-xs text-white/40">
+            <span className="text-up">POST</span> /meeket/inbox <span className="text-white/25">— routed via Formspree</span>
+          </p>
+          <input className={input} name="name" placeholder="name" maxLength={120} autoComplete="name" />
+          <input
+            className={input}
+            name="email"
+            type="email"
+            required
+            maxLength={500}
+            placeholder="email *"
+            autoComplete="email"
+          />
+          <textarea
+            className={`${input} h-40 resize-none`}
+            name="message"
+            placeholder="message * — role, project, or just hello"
+            required
+            maxLength={5000}
+          />
+          <button type="submit" disabled={pending} className="btn-primary w-full justify-center disabled:opacity-60">
+            {pending ? (
+              <>
+                <span className="h-3 w-3 animate-spin rounded-full border-2 border-ink-950 border-t-transparent" />
+                transmitting…
+              </>
+            ) : (
+              <>
+                Send message <FiSend />
+              </>
+            )}
+          </button>
+        </form>
+      </div>
+    </section>
   );
 }
